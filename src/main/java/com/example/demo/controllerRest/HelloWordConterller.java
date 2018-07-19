@@ -30,6 +30,7 @@ public class HelloWordConterller {
 
     @RequestMapping("ajaxTest")
     public String ajaxTest(){
-        return "helloAjzx";
+        String userNmae = userService.getUserName();
+        return userNmae;
     }
 }

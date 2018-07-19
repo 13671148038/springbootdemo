@@ -27,4 +27,9 @@ public class HelloWordConterller {
         List<User> list = userService.getPageDate();
         return list;
     }
+
+    @RequestMapping("ajaxTest")
+    public String ajaxTest(){
+        return "helloAjzx";
+    }
 }

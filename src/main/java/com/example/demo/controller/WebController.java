@@ -13,7 +13,6 @@ public class WebController {
 	@GetMapping("/greeting")
 	public String toIndex(Model model, HttpServletRequest request){
         String remoteUser = request.getContextPath();
-
         model.addAttribute("name", remoteUser);
 		return "greeting";
 	}

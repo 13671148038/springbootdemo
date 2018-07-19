@@ -23,7 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().
                /* antMatchers("/task/toTaskManage").hasAuthority("TASK").
                 antMatchers("/user/toUserManage").hasAuthority("USER").*/
-                antMatchers("/","index").
+                antMatchers("/*","/index","/login").
                 permitAll().
                 anyRequest().authenticated().
                 and().

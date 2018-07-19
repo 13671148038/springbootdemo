@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
 public class DemoApplication {
+
 //public class DemoApplication extends SpringBootServletInitializer {
 
 	/*@Override

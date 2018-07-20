@@ -15,20 +15,20 @@ public class LoginInterceptor implements HandlerInterceptor {
         String servletPath = request.getServletPath();
         servletPath=servletPath.toLowerCase();
         String remoteUser = request.getRemoteUser();
-        if (remoteUser!=null||servletPath.contains("login")){
-                return true;
-        }
-        //ajax 请求是 : XMLHttpRequest
-        String header = request.getHeader("X-Requested-With");
-        //是ajax请求
-        if("XMLHttpRequest".equals(header)){
-            response.setHeader("REDIRECT","REDIRECT");
-            response.setHeader("CONTENTPATH",request.getContextPath()+"/login");
-            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-        }else{
-            response.sendRedirect(request.getContextPath()+"/login");
-        }
-        System.out.println(contextPath+":=========---------------==================----------remoteUser:"+remoteUser);
+		System.out.println(contextPath+":=========---------------==================----------remoteUser:"+remoteUser);
+		if (remoteUser!=null||servletPath.contains("login")){
+			return true;
+		}
+		//ajax 请求是 : XMLHttpRequest
+		String header = request.getHeader("X-Requested-With");
+		//是ajax请求
+		if("XMLHttpRequest".equals(header)){
+			response.setHeader("REDIRECT","REDIRECT");
+			response.setHeader("CONTENTPATH",request.getContextPath()+"/login");
+			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+		}else{
+			response.sendRedirect(request.getContextPath()+"/login");
+		}
 		return true;
 	}
 

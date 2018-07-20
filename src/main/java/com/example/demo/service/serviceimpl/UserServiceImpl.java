@@ -3,6 +3,7 @@ package com.example.demo.service.serviceimpl;
 import com.example.demo.dao.UserDao;
 import com.example.demo.pojo.User;
 import com.example.demo.service.UserService;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -27,6 +28,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getPageDate() {
+        PageHelper.startPage(0,3);
         List<User> pageDate = userDao.getPageDate(null);
         return pageDate;
     }

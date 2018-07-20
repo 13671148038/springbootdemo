@@ -30,4 +30,6 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addViewController("/task/toTaskManage").setViewName("task/task_manager");
         registry.addViewController("/user/toUserManage").setViewName("user/user_manager");
     }
+
+
 }

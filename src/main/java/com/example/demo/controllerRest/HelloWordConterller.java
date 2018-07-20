@@ -4,8 +4,13 @@ import com.example.demo.pojo.User;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -23,9 +28,19 @@ public class HelloWordConterller {
     }
 
     @RequestMapping("getUser")
-    public Object getuUser(){
+    public Object getuUser(HttpServletRequest request) throws IOException {
+        String realPath = request.getServletContext().getRealPath("/");
+        System.out.println(realPath);
         List<User> list = userService.getPageDate();
         return list;
+    }
+
+    @RequestMapping("fileUpload")
+    public String fileUpload( HttpServletRequest request,@RequestParam("file") MultipartFile file,String name) throws IOException {
+        String realPath = request.getServletContext().getRealPath("/sadcsdc.jpg");
+        file.transferTo(new File(realPath));
+        System.out.println("successsadcsdcsdc"+name);
+        return "successsa啥都吃三大从dcsdcsdc"+name;
     }
 
     @RequestMapping("ajaxTest")

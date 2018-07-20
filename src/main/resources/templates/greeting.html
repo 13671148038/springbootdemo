@@ -16,6 +16,12 @@
 <a sec:authorize="hasAuthority('TASK')" th:href="@{/task/toTaskManage}">任务管理</a>
 <a sec:authorize="hasAuthority('SADC')" th:href="@{/user/toUserManage}">用户管理</a>
 <button type="button" onclick="ajaxTest()">测试ajax</button>
+        <form th:action="@{/fileUpload}" method="post" id="asdcsadc" enctype="multipart/form-data">
+            <input type="text" name="name" style="width: 50px">
+        <input type="file" name="file" id="file">
+            <button type="submit">form文件上传</button>
+        </form>
+        <button type="button" onclick="fileLoad()">ajax文件上传</button>
 </body>
 <script>
     $.ajaxSetup({
@@ -41,6 +47,23 @@
             dataType:"text",
             url:contextPath+"/ajaxTest",
             success:function (data){
+                console.log(data)
+            }
+        })
+    }
+    function fileLoad(){
+        var data = new FormData();
+        data.append("file",document.getElementById("file").files[0])
+        $.ajax({
+            type:"post",
+            dataType:"text",
+            url:contextPath+"/fileUpload",
+            data:data,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success:function (data){
+                alert(data)
                 console.log(data)
             }
         })

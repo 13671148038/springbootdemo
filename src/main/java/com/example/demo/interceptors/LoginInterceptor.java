@@ -15,7 +15,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         String servletPath = request.getServletPath();
         servletPath=servletPath.toLowerCase();
         String remoteUser = request.getRemoteUser();
-		System.out.println(contextPath+":=========---------------==================----------remoteUser:"+remoteUser);
+		System.out.println(contextPath+":==都在发v都是发v===========----------remoteUser:"+remoteUser);
 		if (remoteUser!=null||servletPath.contains("login")){
 			return true;
 		}

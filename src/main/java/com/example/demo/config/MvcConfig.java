@@ -4,6 +4,7 @@ import com.example.demo.interceptors.LoginInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -29,5 +30,4 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addViewController("/task/toTaskManage").setViewName("task/task_manager");
         registry.addViewController("/user/toUserManage").setViewName("user/user_manager");
     }
-
 }

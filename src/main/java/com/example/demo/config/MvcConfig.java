@@ -18,14 +18,14 @@ public class MvcConfig implements WebMvcConfigurer {
      * 登录拦截器
      * @param registry
      */
-    @Override
+    /*@Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoginInterceptor());
-    }
+    }*/
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("index");
+//        registry.addViewController("/").setViewName("index");
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/task/toTaskManage").setViewName("task/task_manager");
         registry.addViewController("/user/toUserManage").setViewName("user/user_manager");

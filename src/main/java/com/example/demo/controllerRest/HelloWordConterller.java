@@ -24,13 +24,11 @@ public class HelloWordConterller {
 
     @RequestMapping("helloWord")
     public String HelloWord(){
-        return "HelloWord";
+        return "HelloWord啊对二砂";
     }
 
     @RequestMapping("getUser")
-    public Object getuUser(HttpServletRequest request) throws IOException {
-        String realPath = request.getServletContext().getRealPath("/");
-        System.out.println(realPath);
+    public Object getuUser(HttpServletRequest request) {
         List<User> list = userService.getPageDate();
         return list;
     }

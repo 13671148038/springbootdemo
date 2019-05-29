@@ -7,14 +7,12 @@
     <script type="application/javascript" th:src="@{/jquery.min.js}"></script>
 </head>
 <body>
-        <h1 th:inline="text">Hello [[${#httpServletRequest.contextPath}]]!</h1>
+        <h1 th:inline="text">Hello啊表v [[${#httpServletRequest.contextPath}]]!</h1>
         <div th:text="${name}">
         </div>
         <form th:action="@{/logout}" method="post">
             <input type="submit" value="Sign Out"/>
         </form>
-<a sec:authorize="hasAuthority('TASK')" th:href="@{/task/toTaskManage}">任务管理</a>
-<a sec:authorize="hasAuthority('SADC')" th:href="@{/user/toUserManage}">用户管理</a>
 <button type="button" onclick="ajaxTest()">测试ajax</button>
         <form th:action="@{/fileUpload}" method="post" id="asdcsadc" enctype="multipart/form-data">
             <input type="text" name="name" style="width: 50px">

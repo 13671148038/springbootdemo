@@ -1,6 +1,9 @@
 package com.example.demo.config;
 
+import com.example.demo.interceptors.LoginInterceptor;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -15,16 +18,19 @@ public class MvcConfig implements WebMvcConfigurer {
      *
      * @param registry
      */
-    /*@Override
+    @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginInterceptor());
-    }*/
+        InterceptorRegistration interceptorRegistration = registry.addInterceptor(new LoginInterceptor());
+        interceptorRegistration.excludePathPatterns("/css/**");
+        interceptorRegistration.excludePathPatterns("/js/**");
+        interceptorRegistration.excludePathPatterns("/font/**");
+        interceptorRegistration.excludePathPatterns("/avatars/**");
+    }
+
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
-        registry.addViewController("/login").setViewName("login");
-        registry.addViewController("/task/toTaskManage").setViewName("task/task_manager");
-        registry.addViewController("/user/toUserManage").setViewName("user/user_manager");
+        registry.addViewController("/welcome").setViewName("home/welcome");
     }
 
 

@@ -18,7 +18,6 @@ public class MvcConfig implements WebMvcConfigurer {
      *
      * @param registry
      */
-    @Override
     public void addInterceptors(InterceptorRegistry registry) {
         InterceptorRegistration interceptorRegistration = registry.addInterceptor(new LoginInterceptor());
         interceptorRegistration.excludePathPatterns("/css/**");
@@ -27,7 +26,6 @@ public class MvcConfig implements WebMvcConfigurer {
         interceptorRegistration.excludePathPatterns("/avatars/**");
     }
 
-    @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/welcome").setViewName("home/welcome");

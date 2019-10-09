@@ -35,24 +35,20 @@
 	</trim>
 </insert>
 
-<update id="update">
-	update <include refid="tableName"></include>
-	<set>
-		<if test="passWord != null">passWord=#{passWord},</if>
-		<if test="contact != null">contact=#{contact},</if>
-		<if test="name != null">name=#{name},</if>
-		<if test="createTime != null">createTime=#{createTime},</if>
-	</set>
-	<where>
-		userName=#{userName}
-	</where>
-</update>
-
 <select id="getPageDate" resultType="user">
-	select userName,contact,name,createTime from <include refid="tableName"></include> order by createTime desc
+	<!--select userName,contact,name,createTime from <include refid="tableName"></include> order by createTime desc-->
+	select doctor_name userName from ykq_doctor
 	<where>
+		doctor_phone like '%5%'
 	</where>
 </select>
+<update id="update">
+	<!--select userName,contact,name,createTime from <include refid="tableName"></include> order by createTime desc-->
+	update ykq_doctor  set doctor_name = '凤高爽'
+	<where>
+		id =1
+	</where>
+</update>
 
 <delete id="deleteUser">
   delete from <include refid="tableName"></include>

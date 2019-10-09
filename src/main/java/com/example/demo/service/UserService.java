@@ -11,4 +11,6 @@ public interface UserService {
     List<User> getPageDate();
 
     String getUserName();
+
+    void update();
 }

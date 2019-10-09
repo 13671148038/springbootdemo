@@ -11,4 +11,7 @@ public interface UserMapper {
     void insert(User user);
 
     User getUserByUserName(String username);
+
+    void update();
+
 }

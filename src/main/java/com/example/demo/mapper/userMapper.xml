@@ -37,10 +37,8 @@
 
 <select id="getPageDate" resultType="user">
 	<!--select userName,contact,name,createTime from <include refid="tableName"></include> order by createTime desc-->
-	select doctor_name userName from ykq_doctor
-	<where>
-		doctor_phone like '%5%'
-	</where>
+	select id passWord, doctor_name userName from ykq_doctor
+	order by id
 </select>
 <update id="update">
 	<!--select userName,contact,name,createTime from <include refid="tableName"></include> order by createTime desc-->

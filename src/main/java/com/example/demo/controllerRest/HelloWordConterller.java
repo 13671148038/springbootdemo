@@ -29,7 +29,7 @@ public class HelloWordConterller {
 
     @RequestMapping("getUser")
     public Object getuUser(HttpServletRequest request) {
-        List<User> list = userService.getPageDate();
+        Object list = userService.getPageDate();
         return list;
     }
 
@@ -43,7 +43,7 @@ public class HelloWordConterller {
 
     @RequestMapping("ajaxTest")
     public String ajaxTest(){
-        String userNmae = userService.getUserName();
+        String userNmae = userService.getUserName("ddd");
         return userNmae;
     }
 }

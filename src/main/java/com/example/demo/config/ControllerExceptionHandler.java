@@ -16,14 +16,14 @@ import java.util.Map;
  * @Author zhushaopeng
  * @Date 2019/9/25
  **/
-@RestControllerAdvice
+@RestControllerAdvice()
 public class ControllerExceptionHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(ControllerExceptionHandler.class);
 
     @ExceptionHandler(Exception.class)
     public Object handleControllerException(HttpServletRequest request, Exception e) {
-        logger.error("system exception:", e);
+        logger.error(request.getRequestURI(), e);
         HttpStatus status = getStatus(request);
         Map<String, Object> result = new HashMap();
         result.put("message", e.getMessage());

@@ -8,9 +8,9 @@ import java.util.List;
  * Created by MyPC on 2018/7/16.
  */
 public interface UserService {
-    List<User> getPageDate();
+    Object getPageDate();
 
-    String getUserName();
+    String getUserName(String userName);
 
     void update();
 }

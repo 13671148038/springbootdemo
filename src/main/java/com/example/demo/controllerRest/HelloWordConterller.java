@@ -1,5 +1,7 @@
 package com.example.demo.controllerRest;
 
+import com.example.demo.aspect.controller.ControllerLog;
+import com.example.demo.aspect.service.ServiceLog;
 import com.example.demo.pojo.User;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,9 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by MyPC on 2018/7/13.
@@ -28,8 +32,11 @@ public class HelloWordConterller {
     }
 
     @RequestMapping("getUser")
+    @ControllerLog
     public Object getuUser(HttpServletRequest request) {
-        Object list = userService.getPageDate();
+        Map<String,String> map = new HashMap<>();
+        map.put("aaa","ddd");
+        Object list = userService.getPageDate(map);
         return list;
     }
 

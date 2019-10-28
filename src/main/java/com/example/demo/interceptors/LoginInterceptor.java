@@ -9,12 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginInterceptor implements HandlerInterceptor {
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        String servletPath = request.getServletPath();
-        servletPath = servletPath.toLowerCase();
-        System.out.println(servletPath);
-
-
-
+//        String servletPath = request.getServletPath();
+//        servletPath = servletPath.toLowerCase();
+//        System.out.println(servletPath);
        /* String remoteUser = request.getRemoteUser();
 		if (remoteUser!=null||servletPath.contains("login")){
 			return true;

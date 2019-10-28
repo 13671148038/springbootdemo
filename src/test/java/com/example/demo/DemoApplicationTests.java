@@ -21,8 +21,6 @@ public class DemoApplicationTests {
 
     @Test
     public void contextLoads() {
-        Object pageDate = userService.getPageDate();
-        System.out.println(JSONObject.toJSON(pageDate));
     }
 
     @Test

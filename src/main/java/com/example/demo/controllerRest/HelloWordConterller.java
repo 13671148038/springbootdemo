@@ -4,6 +4,7 @@ import com.example.demo.aspect.controller.ControllerLog;
 import com.example.demo.aspect.service.ServiceLog;
 import com.example.demo.pojo.User;
 import com.example.demo.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,7 @@ import java.util.Map;
 /**
  * Created by MyPC on 2018/7/13.
  */
+@Slf4j
 @RestController
 public class HelloWordConterller {
 
@@ -34,6 +36,7 @@ public class HelloWordConterller {
     @RequestMapping("getUser")
     @ControllerLog
     public Object getuUser(HttpServletRequest request) {
+        log.info("上档次上档次是单词都是");
         Map<String,String> map = new HashMap<>();
         map.put("aaa","ddd");
         Object list = userService.getPageDate(map);

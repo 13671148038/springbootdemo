@@ -1,6 +1,7 @@
 package com.example.demo.mapper;
 
 import com.example.demo.pojo.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ public interface UserMapper {
 
     User getUserByUserName(String username);
 
-    void update();
+    void update(@Param("eee") String eee);
 
+    void update1();
 }

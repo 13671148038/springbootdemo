@@ -1,8 +1,6 @@
 package com.example.demo.controllerRest;
 
 import com.example.demo.aspect.controller.ControllerLog;
-import com.example.demo.aspect.service.ServiceLog;
-import com.example.demo.pojo.User;
 import com.example.demo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,7 +26,7 @@ public class HelloWordConterller {
     private UserService userService;
 
     @RequestMapping("helloWord")
-    public String HelloWord(){
+    public String HelloWord() {
         return "HelloWord啊对二砂";
     }
 
@@ -37,23 +34,35 @@ public class HelloWordConterller {
     @ControllerLog
     public Object getuUser(HttpServletRequest request) {
         log.info("上档次上档次是单词都是");
-        Map<String,String> map = new HashMap<>();
-        map.put("aaa","ddd");
+        Map<String, String> map = new HashMap<>();
+        map.put("aaa", "ddd");
         Object list = userService.getPageDate(map);
         return list;
     }
 
     @RequestMapping("fileUpload")
-    public String fileUpload( HttpServletRequest request,@RequestParam("file") MultipartFile file,String name) throws IOException {
+    public String fileUpload(HttpServletRequest request, @RequestParam("file") MultipartFile file, String name) throws IOException {
         String realPath = request.getServletContext().getRealPath("/sadcsdc.jpg");
         file.transferTo(new File(realPath));
-        System.out.println("successsadcsdcsdc"+name);
-        return "successsa啥都吃三大从dcsdcsdc"+name;
+        System.out.println("successsadcsdcsdc" + name);
+        return "successsa啥都吃三大从dcsdcsdc" + name;
     }
 
     @RequestMapping("ajaxTest")
-    public String ajaxTest(){
+    public String ajaxTest() {
         String userNmae = userService.getUserName("ddd");
         return userNmae;
+    }
+
+    @RequestMapping("aa")
+    public String aa() {
+        userService.update1();
+        return "aa";
+    }
+
+    @RequestMapping("bb")
+    public String bb() {
+        userService.update2();
+        return "bb";
     }
 }

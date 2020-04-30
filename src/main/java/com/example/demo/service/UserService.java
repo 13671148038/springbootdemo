@@ -13,5 +13,6 @@ public interface UserService {
 
     String getUserName(String userName);
 
-    void update();
+    void update1();
+    void update2();
 }

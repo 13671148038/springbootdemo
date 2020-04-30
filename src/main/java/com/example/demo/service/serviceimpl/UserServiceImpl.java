@@ -48,7 +48,16 @@ public class UserServiceImpl implements UserService {
         return "dddddcdc";
     }
 
-    public void update() {
-        userDao.update();
+    public void update1() {
+        userDao.update1();
+        int a = 8;
+        System.out.println(a);
+    }
+
+    @Override
+    public void update2() {
+        userDao.update("cccc");
+        int a = 8;
+        System.out.println(a);
     }
 }

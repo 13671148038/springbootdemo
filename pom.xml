@@ -165,13 +165,11 @@
                 </includes>
             </resource>
             <resource>
-                <directory>src/main/resources</directory>
-                <excludes>
-                    <exclude>environment/**</exclude>
-                </excludes>
+                <directory>src/main/resources/environment/${profile.environment}</directory>
+                <filtering>true</filtering>
             </resource>
             <resource>
-                <directory>src/main/resources/environment/${profile.environment}</directory>
+                <directory>src/main/resources</directory>
             </resource>
         </resources>
         <plugins>

@@ -4,6 +4,7 @@ import com.example.demo.aspect.controller.ControllerLog;
 import com.example.demo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,9 +49,9 @@ public class HelloWordConterller {
         return "successsa啥都吃三大从dcsdcsdc" + name;
     }
 
-    @RequestMapping("ajaxTest")
-    public String ajaxTest() {
-        String userNmae = userService.getUserName("ddd");
+    @GetMapping("ajaxTest")
+    public String ajaxTest(String name) {
+        String userNmae = userService.getUserName(name);
         return userNmae;
     }
 

@@ -24,11 +24,11 @@ public class UserFactoryBeanTest {
 
     @Test
     public void aa() throws Exception {
-//        User user = (User) applicationContext.getBean("userFactoryBean");
-//        User user1 = (User) applicationContext.getBean("userFactoryBean");
-//        System.out.println(user == user1);
-//        System.out.println(user);
-//        System.out.println(user1);
+        User user = (User) applicationContext.getBean("userFactoryBean");
+        User user1 = (User) applicationContext.getBean("userFactoryBean");
+        System.out.println(user == user1);
+        System.out.println(user);
+        System.out.println(user1);
         System.out.println(user3);
 
     }

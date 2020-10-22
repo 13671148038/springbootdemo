@@ -33,7 +33,6 @@
     </dependencyManagement>
 
 
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -41,6 +40,12 @@
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -50,12 +55,12 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-         <dependency>
-             <groupId>org.springframework.boot</groupId>
-             <artifactId>spring-boot-devtools</artifactId>
-             <optional>true</optional>
-             <scope>provided</scope>
-         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
@@ -69,8 +74,8 @@
             <version>2.1.9.RELEASE</version>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-cache</artifactId>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-cache</artifactId>-->
         <!--</dependency>-->
 
         <dependency>
@@ -149,14 +154,14 @@
             <properties>
                 <profile.environment>test</profile.environment>
             </properties>
-			
+
         </profile>
         <profile>
             <id>pro</id>
             <properties>
                 <profile.environment>pro</profile.environment>
             </properties>
-			<activation>
+            <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
@@ -186,7 +191,7 @@
                     <fork>true</fork>
                     <!--增加jvm参数-->
                     <!--<jvmArguments>-->
-                        <!-- -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005-->
+                    <!-- -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005-->
                     <!--</jvmArguments>-->
                 </configuration>
             </plugin>

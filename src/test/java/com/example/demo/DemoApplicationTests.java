@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +59,12 @@ public class DemoApplicationTests {
             log.error("dd",e);
             log.info("ddddddd",e);
         }
+    }
+
+    @Test
+    public void sdcc(){
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.getForObject("https://tuan.stage.ybm100.com/customerimages/750_750.png",String.class);
     }
 
 }

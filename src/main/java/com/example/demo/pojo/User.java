@@ -50,10 +50,4 @@ public class User implements Serializable {
         this.createTime = createTime;
     }
 
-    @Override
-    public String toString() {
-        return "User [userName=" + userName + ", passWord=" + passWord + ", contact=" + contact + ", name=" + name
-                + ", createTime=" + createTime + "]";
-    }
-
 }

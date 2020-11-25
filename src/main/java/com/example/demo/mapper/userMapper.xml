@@ -42,7 +42,13 @@
 </select>
 <update id="update">
 	<!--select userName,contact,name,createTime from <include refid="tableName"></include> order by createTime desc-->
-	update ykq_doctor  set doctor_name = '凤高爽'
+	update aaa  set user_name = #{eee}
+	<where>
+		id =1
+	</where>
+</update>
+<update id="update1">
+	update aaa set eee = 'RRR'
 	<where>
 		id =1
 	</where>

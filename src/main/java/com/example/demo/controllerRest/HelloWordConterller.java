@@ -55,6 +55,13 @@ public class HelloWordConterller {
         return userNmae;
     }
 
+    @GetMapping("b")
+    public Boolean b(String name) {
+        String aa = "aaa";
+        log.info("|||||:{}", aa == name);
+        return aa == name;
+    }
+
     @RequestMapping("aa")
     public String aa() {
         userService.update1();

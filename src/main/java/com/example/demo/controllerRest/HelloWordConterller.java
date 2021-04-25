@@ -1,6 +1,7 @@
 package com.example.demo.controllerRest;
 
 import com.example.demo.aspect.controller.ControllerLog;
+import com.example.demo.pojo.User;
 import com.example.demo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,9 +64,9 @@ public class HelloWordConterller {
     }
 
     @RequestMapping("aa")
-    public String aa() {
-        userService.update1();
-        return "aa";
+    public User aa() {
+        User user = new User();
+        return user;
     }
 
     @RequestMapping("bb")

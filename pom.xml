@@ -148,6 +148,9 @@
             <properties>
                 <profile.environment>dev</profile.environment>
             </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
         </profile>
         <profile>
             <id>test</id>
@@ -161,9 +164,6 @@
             <properties>
                 <profile.environment>pro</profile.environment>
             </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
         </profile>
     </profiles>
 

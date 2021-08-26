@@ -8,12 +8,16 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -55,16 +59,33 @@ public class DemoApplicationTests {
         try {
             Map<Integer, Integer> collect = list.stream().collect(Collectors.toMap(c -> c, Function.identity()));
             collect.forEach((k, v) -> System.out.println(k + ":" + v));
-        }catch (Exception e){
-            log.error("dd",e);
-            log.info("ddddddd",e);
+        } catch (Exception e) {
+            log.error("dd", e);
+            log.info("ddddddd", e);
         }
     }
 
     @Test
-    public void sdcc(){
+    public void sdcc() {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.getForObject("https://tuan.stage.ybm100.com/customerimages/750_750.png",String.class);
+
+        MediaType type = MediaType.parseMediaType("multipart/form-data");
+        // 设置请求的格式类型
+        FileSystemResource fileSystemResource = new FileSystemResource("C:/Users/admin/Pictures/214DC3DD-2E3B-40A0-A80A-4DD8D49A25D6.png");
+        MultiValueMap<String, Object> form = new LinkedMultiValueMap<>();
+        form.add("", fileSystemResource);
+
+        long time = new Date().getTime();
+        HttpHeaders requestHeaders = new HttpHeaders();
+//        requestHeaders.add("Authorization", "");
+        requestHeaders.add("Content-Encoding", "utf-8");
+        requestHeaders.setContentType(type);
+        HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<MultiValueMap<String, Object>>(form, requestHeaders);
+        Map<String, String> param = new HashMap<>();
+        String url = "https://sf-app-avatar.oss-cn-beijing.aliyuncs.com?OSSAccessKeyId=LTAI8ZioEoifzGo3&Expires=" + time + "&Signature=rU3leAhSDn8E3RSx9JMC5dIt4cXXH1";
+        String s = restTemplate.postForObject(url, requestEntity, String.class, param);
+        System.out.println(s);
+
     }
 
 }

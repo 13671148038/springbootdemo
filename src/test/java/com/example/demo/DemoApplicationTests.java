@@ -82,7 +82,7 @@ public class DemoApplicationTests {
         requestHeaders.setContentType(type);
         HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<MultiValueMap<String, Object>>(form, requestHeaders);
         Map<String, String> param = new HashMap<>();
-        String url = "https://sf-app-avatar.oss-cn-beijing.aliyuncs.com?OSSAccessKeyId=LTAI8ZioEoifzGo3&Expires=" + time + "&Signature=rU3leAhSDn8E3RSx9JMC5dIt4cXXH1";
+        String url = "";
         String s = restTemplate.postForObject(url, requestEntity, String.class, param);
         System.out.println(s);
 

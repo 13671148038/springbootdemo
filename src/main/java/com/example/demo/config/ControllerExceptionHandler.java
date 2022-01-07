@@ -1,14 +1,18 @@
 package com.example.demo.config;
 
+import com.alibaba.fastjson.JSON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindException;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,6 +24,16 @@ import java.util.Map;
 public class ControllerExceptionHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(ControllerExceptionHandler.class);
+
+    @ExceptionHandler(BindException.class)
+    public Object handleBindException(HttpServletRequest request, BindException e) {
+        List<ObjectError> allErrors = e.getAllErrors();
+        String[] errorArr = new String[allErrors.size()];
+        for (int i = 0; i < allErrors.size(); i++) {
+            errorArr[i] = allErrors.get(i).getDefaultMessage();
+        }
+        return JSON.toJSONString(errorArr);
+    }
 
     @ExceptionHandler(Exception.class)
     public Object handleControllerException(HttpServletRequest request, Exception e) {

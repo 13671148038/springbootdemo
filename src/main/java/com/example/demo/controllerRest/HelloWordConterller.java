@@ -5,6 +5,7 @@ import com.example.demo.pojo.User;
 import com.example.demo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.NotBlank;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -28,7 +30,7 @@ public class HelloWordConterller {
     private UserService userService;
 
     @RequestMapping("helloWord")
-    public String HelloWord() {
+    public String HelloWord(@Validated User user) {
         return "HelloWord啊对二砂";
     }
 

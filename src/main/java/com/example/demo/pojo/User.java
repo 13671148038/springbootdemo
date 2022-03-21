@@ -1,26 +1,30 @@
 package com.example.demo.pojo;
 
+import com.example.demo.validationgroupkind.Update;
 import lombok.Data;
-import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 
 @Data
 public class User implements Serializable {
 
+
+    @NotNull(message = "id不能为空", groups = Update.class)
+    @Min(value = 1, message = "id不能为0", groups = Update.class)
+    private Integer id;
     @NotBlank(message = "用户名不能为空")
-    @Length(max = 6, message = "用户名长度不能大于6")
+    @Size(max = 5, message = "用户名长度不能大于5")
     private String userName;
-    @NotBlank(message = "密码不能为空")
     private String passWord;
     private String contact;
     private String name;
     private String createTime;
     private List<String> dataList;
-    @Min(value = 1, message = "num不能为0")
     private Integer num;
 
 }

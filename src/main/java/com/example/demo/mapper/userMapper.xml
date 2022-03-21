@@ -66,7 +66,19 @@
     </delete>
 
     <select id="sdc">
+        <choose>
+            <when test="啊啊 !=null and ">
+                <foreach collection="" open="(" close=")" separator="," item="id">
+                    #{id}
+                </foreach>
+            </when>
+            <otherwise>
 
+            </otherwise>
+        </choose>
+        <if test="">
+
+        </if>
     </select>
 
 </mapper>

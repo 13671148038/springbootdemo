@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import java.io.File;
 import java.io.IOException;
@@ -30,7 +29,7 @@ public class HelloWordConterller {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("helloWord")
+    @GetMapping("helloWord")
     public String HelloWord(@Validated User user) {
         return "HelloWord啊对二砂";
     }
@@ -54,9 +53,10 @@ public class HelloWordConterller {
     }
 
     @GetMapping("ajaxTest")
-    public String ajaxTest(String name) {
-        String userNmae = userService.getUserName(name);
-        return userNmae;
+    @Validated
+    public String ajaxTest(@NotBlank(message = "aaaaa") String name) {
+//        String userNmae = userService.getUserName(name);
+        return name;
     }
 
     @GetMapping("b")

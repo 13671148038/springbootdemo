@@ -20,7 +20,7 @@ import java.lang.reflect.Method;
 @Slf4j
 @Aspect
 @Component
-public class ControllerLogAspect {
+public class LogAspect {
 
     /**
      * 换行符
@@ -30,7 +30,8 @@ public class ControllerLogAspect {
     /**
      * 以自定义@ControllerLog注解为切点
      */
-    @Pointcut("@annotation(com.example.demo.aspect.controller.ControllerLog)")
+//    @Pointcut("@annotation(com.example.demo.aspect.controller.ControllerLog)")
+    @Pointcut("execution(public * com.example.demo.controller*..*Controller.*(..))")
     public void controllerLog() {
     }
 
@@ -42,7 +43,16 @@ public class ControllerLogAspect {
 
     @After("controllerLog()")
     public void doAfter() {
-        log.info("==========================================Controller Log End =========================================={}", LINE_SEPARATOR);
+        log.info("doAfter====");
+    }
+
+    @AfterReturning("controllerLog()")
+    public void doAfterReturning() {
+        log.info("doAfterReturning=====");
+    }
+    @AfterThrowing("controllerLog()")
+    public void doAfterThrowing() {
+        log.info("doAfterThrowing=====");
     }
 
     @Before("controllerLog()")
@@ -50,14 +60,14 @@ public class ControllerLogAspect {
         // 开始打印请求日志
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
-        // 获取 @WebLog 注解的描述信息
-        String methodDescription = getAspectLogDescription(joinPoint);
+//        // 获取 @WebLog 注解的描述信息
+//        String methodDescription = getAspectLogDescription(joinPoint);
         // 打印请求相关参数
         log.info("==========================================Controller Log Start ==========================================");
         // 打印请求 url
         log.info("URL            : {}", request.getRequestURL().toString());
-        // 打印描述信息
-        log.info("Description    : {}", methodDescription);
+//        // 打印描述信息
+//        log.info("Description    : {}", methodDescription);
         // 打印 Http method
         log.info("HTTP Method    : {}", request.getMethod());
         // 打印请求的 IP

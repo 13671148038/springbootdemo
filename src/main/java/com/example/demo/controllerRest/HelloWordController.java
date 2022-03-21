@@ -24,7 +24,7 @@ import java.util.Map;
  */
 @Slf4j
 @RestController
-public class HelloWordConterller {
+public class HelloWordController {
 
     @Autowired
     private UserService userService;
@@ -55,6 +55,7 @@ public class HelloWordConterller {
     @GetMapping("ajaxTest")
     @Validated
     public String ajaxTest(@NotBlank(message = "aaaaa") String name) {
+        int a = 43 / 0;
 //        String userNmae = userService.getUserName(name);
         return name;
     }

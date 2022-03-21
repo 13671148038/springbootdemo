@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+import com.example.demo.interceptors.LogInterceptor;
 import com.example.demo.interceptors.LoginInterceptor;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -30,6 +31,8 @@ public class MvcConfig implements WebMvcConfigurer {
      * @param registry
      */
     public void addInterceptors(InterceptorRegistry registry) {
+        //可以注册多个拦截器,先注册先执行
+        registry.addInterceptor(new LogInterceptor());
         registry.addInterceptor(new LoginInterceptor()).
                 //swagger不拦截
                         excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**");

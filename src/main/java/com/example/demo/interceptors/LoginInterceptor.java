@@ -13,6 +13,7 @@ import java.util.UUID;
 public class LoginInterceptor implements HandlerInterceptor {
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        log.info("preHandle==============");
         MDC.put("trace_uuid", UUID.randomUUID().toString());
 //        String servletPath = request.getServletPath();
 //        servletPath = servletPath.toLowerCase();
@@ -41,6 +42,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         log.error("ex:", ex);
         log.info("afterCompletion==============");
+        MDC.clear();
     }
 
     /* public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,

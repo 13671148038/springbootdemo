@@ -27,6 +27,10 @@ public class ControllerExceptionHandler {
 
     @ExceptionHandler(BindException.class)
     public Object handleBindException(HttpServletRequest request, BindException e) {
+        String servletPath = request.getServletPath();
+        String requestURI = request.getRequestURI();
+        logger.info("servletPath:{}", servletPath);
+        logger.info("requestURI:{}", requestURI);
         List<ObjectError> allErrors = e.getAllErrors();
         String[] errorArr = new String[allErrors.size()];
         for (int i = 0; i < allErrors.size(); i++) {

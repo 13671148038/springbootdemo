@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.feign.DemoFeign;
 import com.example.demo.pojo.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,6 +22,8 @@ public class UserFactoryBeanTest {
 
     @Autowired
     private User user3;
+    @Autowired
+    private DemoFeign demoFeign;
 
     @Test
     public void aa() throws Exception {
@@ -31,6 +34,12 @@ public class UserFactoryBeanTest {
         System.out.println(user1);
         System.out.println(user3);
 
+    }
+
+    @Test
+    public void asdca() throws Exception {
+        String s = demoFeign.get("速度参赛的从速度参赛的");
+        System.out.println(s);
     }
 
 }

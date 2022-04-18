@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import java.io.File;
 import java.io.IOException;
@@ -30,7 +31,7 @@ public class HelloWordController {
     private UserService userService;
 
     @GetMapping("helloWord")
-    public String HelloWord(@Validated User user) {
+    public String HelloWord(@Valid User user) {
         return "HelloWord啊对二砂";
     }
 

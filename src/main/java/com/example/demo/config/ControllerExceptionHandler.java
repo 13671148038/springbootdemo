@@ -27,6 +27,7 @@ public class ControllerExceptionHandler {
 
     @ExceptionHandler(BindException.class)
     public Object handleBindException(HttpServletRequest request, BindException e) {
+        logger.error("as", e);
         String servletPath = request.getServletPath();
         String requestURI = request.getRequestURI();
         logger.info("servletPath:{}", servletPath);
